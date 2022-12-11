@@ -1,26 +1,43 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Random String Generator</title>
-  </head>
-  <body>
-    <h1>Random String:</h1>
-    <p id="randomString"></p>
+<head>
+  <title>Random String Generator</title>
+</head>
+<body>
+  <h1>Random String Generator</h1>
+  <p id="randomString"></p>
+  <script>
+    // Function to generate a random string
+    function generateRandomString() {
+      // possible characters that can be included in the random string
+      var possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    <script>
-      // Generate a random string and display it on the page
-      function generateRandomString() {
-        // Generate a random string of length 10
-        const randomString = Math.random().toString(36).substr(2, 10);
+      // start with an empty string
+      var randomString = "";
 
-        // Display the random string on the page
-        document.getElementById("randomString").innerHTML = randomString;
+      // generate a random string of length 10
+      for (var i = 0; i < 10; i++) {
+        // get a random character from the possibleCharacters string
+        var randomCharacter = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+
+        // append the character to the randomString
+        randomString += randomCharacter;
       }
 
-      // Generate the initial random string
-      generateRandomString();
+      return randomString;
+    }
 
-      // Regenerate the random string every 2 minutes
-      setTimeout(generateRandomString, 1000 * 60 * 2);
-    </script>
-  </body>
+    // Generate a new random string every hour
+    setInterval(function() {
+      // get a reference to the element where we want to display the random string
+      var randomStringElement = document.getElementById("randomString");
+
+      // generate a new random string
+      var randomString = generateRandomString();
+
+      // update the text content of the element with the new random string
+      randomStringElement.textContent = randomString;
+    }, 3600000); // 3600000 milliseconds = 1 hour
+  </script>
+</body>
 </html>
