@@ -27,7 +27,7 @@
       return randomString;
     }
 
-    // Generate a new random string every hour
+    // Generate a new random string every 5 seconds
     setInterval(function() {
       // get a reference to the element where we want to display the random string
       var randomStringElement = document.getElementById("randomString");
@@ -37,7 +37,7 @@
 
       // update the text content of the element with the new random string
       randomStringElement.textContent = randomString;
-    }, 3600000); // 3600000 milliseconds = 1 hour
+    }, 5000); // 5000 milliseconds = 5 seconds
   </script>
 </body>
 </html>
