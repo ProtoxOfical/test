@@ -2,31 +2,21 @@
 <html>
 <head>
   <title>Random String Generator</title>
-</head>
-<body>
-  <h1>Random String Generator</h1>
-  <p id="randomString"></p>
-  <script>
-    // Function to generate a random string
-    function generateRandomString() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // get a reference to the element where we want to display the random string
-          var randomStringElement = document.getElementById("randomString");
+  <script type="text/javascript">
+    function generateString() {
+      // Generate a random string
+      var randomString = Math.random().toString(36).substring(2);
 
-          // update the text content of the element with the new random string
-          randomStringElement.textContent = this.responseText;
-        }
-      };
-      xhttp.open("GET", "randomstring.php", true);
-      xhttp.send();
+      // Display the string in the page
+      document.getElementById("string").innerHTML = randomString;
     }
 
-    // Generate a new random string every 5 seconds
-    setInterval(function() {
-      generateRandomString();
-    }, 5000); // 5000 milliseconds = 5 seconds
+    // Call the generateString function every 5 seconds
+    setInterval(generateString, 5000);
   </script>
+</head>
+<body>
+  <h1>Random String:</h1>
+  <p id="string"></p>
 </body>
 </html>
