@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random String Generator</title>
+  <title>Random Script Generator</title>
   <script type="text/javascript">
-    function generateString() {
-      // Generate a random string
-      var randomString = Math.random().toString(36).substring(2);
+    function generateScript() {
+      // Generate a random script
+      var randomScript = Math.random().toString(36).substring(2);
 
-      // Display the string in the page
-      document.getElementById("string").innerHTML = randomString;
+      // Create a new script element
+      var script = document.createElement("script");
+
+      // Set the script content
+      script.text = randomScript;
+
+      // Append the script to the head of the page
+      document.head.appendChild(script);
     }
 
-    // Call the generateString function every 5 seconds
-    setInterval(generateString, 5000);
+    // Call the generateScript function every 2 seconds
+    setInterval(generateScript, 2000);
   </script>
 </head>
 <body>
-  <h1>Random String:</h1>
-  <p id="string"></p>
+  <h1>Random Script:</h1>
+  <p>A new script will be generated and added to the page every 2 seconds.</p>
 </body>
 </html>
