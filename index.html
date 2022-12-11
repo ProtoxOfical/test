@@ -9,34 +9,23 @@
   <script>
     // Function to generate a random string
     function generateRandomString() {
-      // possible characters that can be included in the random string
-      var possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // get a reference to the element where we want to display the random string
+          var randomStringElement = document.getElementById("randomString");
 
-      // start with an empty string
-      var randomString = "";
-
-      // generate a random string of length 10
-      for (var i = 0; i < 10; i++) {
-        // get a random character from the possibleCharacters string
-        var randomCharacter = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-
-        // append the character to the randomString
-        randomString += randomCharacter;
-      }
-
-      return randomString;
+          // update the text content of the element with the new random string
+          randomStringElement.textContent = this.responseText;
+        }
+      };
+      xhttp.open("GET", "randomstring.php", true);
+      xhttp.send();
     }
 
     // Generate a new random string every 5 seconds
     setInterval(function() {
-      // get a reference to the element where we want to display the random string
-      var randomStringElement = document.getElementById("randomString");
-
-      // generate a new random string
-      var randomString = generateRandomString();
-
-      // update the text content of the element with the new random string
-      randomStringElement.textContent = randomString;
+      generateRandomString();
     }, 5000); // 5000 milliseconds = 5 seconds
   </script>
 </body>
