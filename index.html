@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie Test</title>
+	<script>
+		function setCookie(name, value) {
+			// Set the cookie with a path of "/"
+			document.cookie = name + "=" + value + "; path=/";
+		}
+	</script>
+</head>
+<body>
+	<h1>Cookie Test</h1>
+	
+	<p>Click the button to set the cookie:</p>
+	
+	<button onclick="setCookie('myCookie', 'true')">Set Cookie</button>
+</body>
+</html>
