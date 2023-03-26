@@ -15,5 +15,25 @@
 	<p>Click the button to set the cookie:</p>
 	
 	<button onclick="setCookie('Suckmyass', 'true')">Set Cookie</button>
+	<button onclick="setCookie('Suckmyass', 'true')">Set Cookie</button>
 </body>
+<script>
+	var socket = new WebSocket("ws://localhost:8080");
+	socket.onopen = function(event) {
+		console.log("WebSocket connection opened");
+	}
+	socket.onmessage = function(event) {
+		console.log("WebSocket message received: " + event.data);
+	}
+	function sendCommand() {
+		socket.send("showMessageBox");
+	}
+</script>
+</head>
+<body>
+<h1>WebSocket Test</h1>
+
+<p>Click the button to send a command to the WinForms app:</p>
+
+<button onclick="sendCommand()">Send Command</button>
 </html>
